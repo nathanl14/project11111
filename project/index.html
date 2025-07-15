@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lokoworks | Mobile Game Development</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FFD700;
+            --secondary: #FF5E00;
+            --dark: #0A0A0A;
+            --light: #F5F5F5;
+            --accent: #00C2FF;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(0, 194, 255, 0.1) 0%, transparent 50%);
+            background-attachment: fixed;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        header {
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        header::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            margin: 1.5rem auto;
+            border-radius: 3px;
+        }
+        
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+            letter-spacing: 1px;
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+            to { text-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 94, 0, 0.4); }
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .progress {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: var(--light);
+            margin: 3rem auto;
+            padding: 2rem;
+            border: 2px solid;
+            border-image: linear-gradient(45deg, var(--primary), var(--accent)) 1;
+            border-radius: 8px;
+            background-color: rgba(10, 10, 10, 0.7);
+            position: relative;
+            overflow: hidden;
+            max-width: 600px;
+            box-shadow: 0 0 20px rgba(0, 194, 255, 0.1);
+            animation: pulse 3s infinite;
+        }
+        
+        .progress::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent,
+                transparent,
+                transparent,
+                rgba(255, 215, 0, 0.1),
+                transparent,
+                transparent,
+                transparent
+            );
+            transform: rotate(30deg);
+            animation: shine 5s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 20px rgba(0, 194, 255, 0.1); }
+            50% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.2); }
+            100% { box-shadow: 0 0 20px rgba(0, 194, 255, 0.1); }
+        }
+        
+        .game-info {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .game-info p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .support-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 3rem auto;
+            max-width: 600px;
+            border-left: 3px solid var(--accent);
+        }
+        
+        .support-email {
+            display: inline-block;
+            background: rgba(0, 194, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .support-email:hover {
+            background: rgba(0, 194, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            margin: 0 auto 2rem;
+            border-radius: 3px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 0.5rem;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .progress {
+                font-size: 1.4rem;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>LOKOWORKS</h1>
+            <p class="tagline">Creating immersive mobile gaming experiences that captivate and inspire</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="progress">
+                🚀 GAME DEVELOPMENT IN PROGRESS 🚀
+            </div>
+            
+            <div class="game-info">
+                <p>We're crafting extraordinary gaming experiences that push the boundaries of mobile entertainment.</p>
+                <p>Our team is working tirelessly to bring you innovative gameplay, stunning visuals, and unforgettable adventures.</p>
+                <p>Stay tuned for updates on our upcoming mobile games that will redefine your gaming experience.</p>
+            </div>
+            
+            <div class="support-section">
+                <h3>Need Assistance?</h3>
+                <p>Our support team is here to help with any questions you may have.</p>
+                <a href="mailto:support@lokoworks.com" class="support-email">support@lokoworks.com</a>
+            </div>
+        </div>
+        
+        <footer>
+            <div class="social-links">
+                <a href="#" aria-label="Twitter">Twitter</a>
+                <a href="#" aria-label="Instagram">Instagram</a>
+                <a href="#" aria-label="Facebook">Facebook</a>
+                <a href="#" aria-label="YouTube">YouTube</a>
+            </div>
+            <p class="copyright">© 2025 Lokoworks. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
